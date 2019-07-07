@@ -8,7 +8,7 @@ describe('Lending', function () {
       browser.url('/');
       let title = browser.getTitle();
       assert.equal(title, '32/05 Team');
-    })
+    });
 
     it('Favicon', function () {
       browser.url('https://static.tildacdn.com/tild3163-3936-4237-b862-646639363937/favicon.ico');
@@ -27,20 +27,20 @@ describe('Lending', function () {
       browser.url('/');
       let allrec = $('#allrecords').isDisplayed();
       assert.equal(allrec, true);
-    })
+    });
 
     it('Logo is displayed', function () {
       let logo = $('#rec63454432 > div > div > div.t-col.t-col_3.t-prefix_1.t-align_center > img').isDisplayed();
       assert.equal(logo, true);
-    })
+    });
 
     it('Logo size', function () {
       let logo = $('#rec63454432 > div > div > div.t-col.t-col_3.t-prefix_1.t-align_center > img');
       let width = logo.getCSSProperty('width').parsed.value;
       let height = logo.getCSSProperty('height').parsed.value;
       let size = `${width}x${height}`;
-      assert.equal(size, '220x101.95');
-    })
+      assert.equal(size, '260x120.488');
+    });
 
     it('Footer', function () {
       let header = $('#rec63454443').isDisplayed();
@@ -56,12 +56,12 @@ describe('Lending', function () {
     it('Unit is displayed', function () {
       let unit = $('#rec63454433').isDisplayed();
       assert.equal(unit, true);
-    })
+    });
 
     it('Describe is displayed', function () {
       let describe = $(sel).isDisplayed();
       assert.equal(describe, true);
-    })
+    });
 
     it('Text includes', function () {
       let text = $(sel).getText();
@@ -87,7 +87,6 @@ describe('Lending', function () {
       let fontSize = $(sel).getCSSProperty('line-height').value;
       assert.equal(fontSize, '52px')
     });
-
 
     it('Font Family', function () {
       let fontFamily = $(sel).getCSSProperty('font-family').value;
