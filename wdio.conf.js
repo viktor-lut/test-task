@@ -7,7 +7,7 @@ exports.config = {
   runner: 'local',
   //
   specs: [
-    './test/lending.js'
+    './test/specs/lending.js'
   ],
   // Patterns to exclude.
   exclude: [
@@ -56,4 +56,4 @@ exports.config = {
   // =====
   // Hooks
   // =====
-}
+};
