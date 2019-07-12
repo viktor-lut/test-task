@@ -7,7 +7,7 @@ exports.config = {
   runner: 'local',
   //
   specs: [
-    './test/specs/lending.js'
+    './test/specs/test.js'
   ],
   // Patterns to exclude.
   exclude: [
@@ -28,7 +28,7 @@ exports.config = {
 
   bail: 0,
 
-  baseUrl: 'http://3205.today',
+  baseUrl: 'https://shop.saint-gobain.ru/',
 
   waitforTimeout: 10000,
 
