@@ -20,6 +20,15 @@ import { assert } from 'chai';
       assert.isTrue(box);
     });
 
-
+    it('case-4', function () {
+      let selb = $('a.ui-spinner-button.ui-spinner-up.ui-corner-tr.ui-button.ui-widget.ui-state-default.ui-button-text-only');
+      selb.click();
+      selb.click();
+      let cnt = $('input#spinner.ui-spinner-input').getAttribute('aria-valuenow');
+      let prs =$('div.price.price1').getText();
+      let sum =$('span.price').getText().slice(0,-4);
+      prs = prs.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
+      assert.equal((+cnt)*(+prs), +sum);
+    });
 
   });
