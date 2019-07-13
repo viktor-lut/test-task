@@ -4,6 +4,9 @@ import { assert } from 'chai';
 
     it('case-1', function () {
       browser.url('/');
+     // $('.j-dropdown__link').moveTo();
+      browser.pause(200);
+      $('span.btn.btn_yes.js-location-message__close').click();
       $('#ui-id-2 > ul > li:nth-child(1) > a').click();
       let sect = $('.view-content').isDisplayed();
       assert.isTrue(sect);
@@ -16,5 +19,7 @@ import { assert } from 'chai';
       let box = sel.isDisplayed();
       assert.isTrue(box);
     });
+
+
 
   });
