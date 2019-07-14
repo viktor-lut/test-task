@@ -85,4 +85,26 @@ import { assert } from 'chai';
       assert.equal(cnt, data.cont);
     });
 
+    it('case-7', function () {
+      const fs = require('fs');
+      const filePath = '/projects/test/test/data/data.json';
+      let data = fs.readFileSync(filePath, "utf-8");
+      data = JSON.parse(data);
+      let price = $('#views-form-commerce-cart-form-cart-pane > div > table > tbody > tr > td.col-3.commerce-unit-price > span').getText();
+      assert.equal(price, data.priceP);
+    });
+
+    it('case-8', function() {
+      let prs = $('#views-form-commerce-cart-form-cart-pane > div > table > tbody > tr > td.col-3.commerce-unit-price > span').getText();
+      prs = prs.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
+      let cnt = $('#edit-edit-quantity-0').getAttribute('value');
+      let sum = $('#views-form-commerce-cart-form-cart-pane > div > div.b-total > div.pickup > div > div > div.value > div:nth-child(1)').getText();
+      sum = sum.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
+      let points = $('#views-form-commerce-cart-form-cart-pane > div > table > tbody > tr > td.col-2.title > div > div.name').getAttribute('data-profi-points');
+      let sumP = $('#views-form-commerce-cart-form-cart-pane > div > div.b-total > div.pickup > div > div > div.value > div.order-profi-points > span').getText();
+      sumP = parseInt(sumP.replace(/\s+/g, ''), 10);
+      assert.equal((+cnt)*(+prs), +sum);
+      assert.equal((+cnt)*(+points), sumP);
+    });
+
   });
