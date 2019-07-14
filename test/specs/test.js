@@ -21,7 +21,7 @@ import { assert } from 'chai';
       data.stock = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[4]').getText();
       data.points = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[5]/span[1]').getText();
 
-      fs.writeFileSync('F:\\projects\\test\\test\\data\\data.json', JSON.stringify(data));
+      fs.writeFileSync('/projects/test/test/data/data.json', JSON.stringify(data));
       assert.isTrue(sect);
     });
 
@@ -45,10 +45,12 @@ import { assert } from 'chai';
       let data = fs.readFileSync(filePath, "utf-8");
       data = JSON.parse(data);
 
+      data.cont = cnt;
       let prs = data.priceP;
       let sum = $('span.price').getText().slice(0,-4);
       let sumP = parseInt($('/html/body/div[1]/div/div[3]/div[2]/div[3]/div/div/p[2]/span[2]').getText(), 10);
       let pont = data.points;
+      fs.writeFileSync('/projects/test/test/data/data.json', JSON.stringify(data));
       prs = prs.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
       assert.equal((+cnt)*(+prs), +sum);
       assert.equal((+cnt)*(+pont), sumP);
@@ -60,6 +62,20 @@ import { assert } from 'chai';
       sel.waitForDisplayed(5000);
       let box = sel.isDisplayed();
       assert.isTrue(box);
+    });
+
+    it('case-5', function () {
+      $('#edit-edit-delete-0').click();
+      let sel = $('#views-form-commerce-cart-form-cart-pane');
+      sel.waitForDisplayed(5000);
+
+      const fs = require('fs');
+      const filePath = '/projects/test/test/data/data.json';
+      let data = fs.readFileSync(filePath, "utf-8");
+      data = JSON.parse(data);
+      let name = $('#views-form-commerce-cart-form-cart-pane > div > table > tbody > tr > td.col-2.title > div > div.name > a').getText();
+      assert.equal(name, data.nameP);
+
     });
 
   });
