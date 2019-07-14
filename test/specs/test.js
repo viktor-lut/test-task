@@ -1,5 +1,6 @@
 import { assert } from 'chai';
-import gt from "../helpers/hlp1";
+
+
 
   describe('Order', function () {
 
@@ -9,6 +10,18 @@ import gt from "../helpers/hlp1";
       $('span.btn.btn_yes.js-location-message__close').click();
       $('#ui-id-2 > ul > li:nth-child(1) > a').click();
       let sect = $('.view-content').isDisplayed();
+
+      const fs = require('fs');
+      const filePath = '/projects/test/test/data/data.json';
+      let data = fs.readFileSync(filePath, "utf-8");
+      data = JSON.parse(data);
+      data.nameP = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[1]/a').getText();
+      data.typeP = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[2]/div/div/div').getText();
+      data.priceP = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[3]').getText();
+      data.stock = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[4]').getText();
+      data.points = $('/html/body/div[1]/div/div[4]/div[2]/div[4]/div/div[1]/div[5]/span[1]').getText();
+
+      fs.writeFileSync('F:\\projects\\test\\test\\data\\data.json', JSON.stringify(data));
       assert.isTrue(sect);
     });
 
@@ -21,19 +34,32 @@ import gt from "../helpers/hlp1";
       assert.isTrue(box);
     });
 
-    it('case-4', function () {
-      let selb = $('a.ui-spinner-button.ui-spinner-up.ui-corner-tr.ui-button.ui-widget.ui-state-default.ui-button-text-only');
-      selb.waitForDisplayed(5000);
-      selb.click();
-      selb.click();
+    it('case-3', function () {
+      let selb = $$('.ui-spinner-button');
+      selb[0].click();
+      selb[0].click();
       let cnt = $('input#spinner.ui-spinner-input').getAttribute('aria-valuenow');
-      let prs = $('div.price.price1').getText();
+
+      const fs = require('fs');
+      const filePath = '/projects/test/test/data/data.json';
+      let data = fs.readFileSync(filePath, "utf-8");
+      data = JSON.parse(data);
+
+      let prs = data.priceP;
       let sum = $('span.price').getText().slice(0,-4);
       let sumP = parseInt($('/html/body/div[1]/div/div[3]/div[2]/div[3]/div/div/p[2]/span[2]').getText(), 10);
-      let pont = gt.getPoint();
+      let pont = data.points;
       prs = prs.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
       assert.equal((+cnt)*(+prs), +sum);
       assert.equal((+cnt)*(+pont), sumP);
+    });
+
+    it('case-4', function () {
+      $('span.btn-buy.to-cart').click();
+      let sel = $('#views-form-commerce-cart-form-cart-pane');
+      sel.waitForDisplayed(5000);
+      let box = sel.isDisplayed();
+      assert.isTrue(box);
     });
 
   });

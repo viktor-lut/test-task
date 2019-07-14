@@ -24,7 +24,7 @@ exports.config = {
   // Test Configurations
   // ===================
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: 'warn',
+  logLevel: 'info',
 
   bail: 0,
 
