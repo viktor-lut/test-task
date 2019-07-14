@@ -125,4 +125,14 @@ import { assert } from 'chai';
       assert.isTrue(box);
     });
 
+    it('case-11', function() {
+      let sumT = $('body > div.page > div > div.b-registration > div.reg-cart-content > div > div > div:nth-child(3) > div.value').getText();
+      sumT = sumT.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
+      let sumP = $('body > div.page > div > div.b-registration > div.reg-cart-content > div > div > div:nth-child(4) > div.value').getText();
+      sumP = sumP.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
+      let sumG = $('body > div.page > div > div.b-registration > div.reg-cart-content > div > div > div.total-bot > div.count > div.value').getText();
+      sumG = sumG.replace(/\s+/g, '').slice(0,-4).split(',').join('.');
+      assert.equal((+sumP)+(+sumT), +sumG);
+    });
+
   });
