@@ -107,4 +107,12 @@ import { assert } from 'chai';
       assert.equal((+cnt)*(+points), sumP);
     });
 
+    it('case-9', function() {
+      $('#edit-checkout').click();
+      let sel = $('body > div.page > div > div.b-registration');
+      sel.waitForDisplayed(5000);
+      let box = sel.isDisplayed();
+      assert.isTrue(box);
+    });
+
   });
