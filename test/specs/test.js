@@ -115,4 +115,14 @@ import { assert } from 'chai';
       assert.isTrue(box);
     });
 
+    it('case-10', function() {
+      $('#commerce-checkout-form-checkout > div > div > div.item.item-delivery.item-delivery.opened > div.item-content > div > div.b-form-inner > div.radio.by-hand > div.fake-radio.fake-radio-checked').click();
+      $('#edit-customer-profile-shipping-string-address').setValue('Россия, Москва, Ленинский проспект, 18');
+      $('#edit-customer-profile-shipping-delivery-submit-1').click();
+      let sel = $('body > div.page > div > div.b-registration > div.reg-cart-content > div > div > div:nth-child(4) > div.value');
+      sel.waitForDisplayed(5000);
+      let box = sel.isDisplayed();
+      assert.isTrue(box);
+    });
+
   });
