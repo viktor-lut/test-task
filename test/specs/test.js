@@ -68,14 +68,21 @@ import { assert } from 'chai';
       $('#edit-edit-delete-0').click();
       let sel = $('#views-form-commerce-cart-form-cart-pane');
       sel.waitForDisplayed(5000);
-
       const fs = require('fs');
       const filePath = '/projects/test/test/data/data.json';
       let data = fs.readFileSync(filePath, "utf-8");
       data = JSON.parse(data);
       let name = $('#views-form-commerce-cart-form-cart-pane > div > table > tbody > tr > td.col-2.title > div > div.name > a').getText();
       assert.equal(name, data.nameP);
+    });
 
+    it('case-6', function () {
+      const fs = require('fs');
+      const filePath = '/projects/test/test/data/data.json';
+      let data = fs.readFileSync(filePath, "utf-8");
+      data = JSON.parse(data);
+      let cnt = $('#edit-edit-quantity-0').getAttribute('value');
+      assert.equal(cnt, data.cont);
     });
 
   });
