@@ -159,6 +159,7 @@ describe('Order', function() {
         $('#edit-customer-profile-billing-field-user-phone-und-0-value').setValue('380601112233');
         $('#edit-customer-profile-billing-field-customer-recepient-profile > div > div > div > div.fake-select-btn').click()
         let drop = $('body > div.fake-select-wrap > div > div > div.fake-select-sub-item.fake-select-sub-item-selected > div');
+        browser.pause(500);
         drop.click();
         $('#edit-customer-profile-billing-field-user-comment-und-0-value').setValue('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eleifend neque eget purus pretium tincidunt. Donec eros diam, sollicitudin a eleifend sit amet, luctus ac sapien. Donec vitae mollis nisi. Aliquam ut accumsan nisi.');
         $('#edit-customer-profile-billing-agreement').click();
@@ -199,7 +200,7 @@ describe('Order', function() {
         data = JSON.parse(data);
         let sumItog = data.itog;
 
-        let itogO = $('/html/body/div[1]/div/div[5]/div/table/tbody/tr/td[5]/div[1]').getText();
+        let itogO = $('/html/body/div[1]/div/div[5]/div/div/div[2]/div[2]/div[1]').getText();
         itogO = itogO.replace(/\s+/g, '').slice(0, -4).split(',').join('.');
 
         assert.equal(sumItog, itogO);
