@@ -6,7 +6,6 @@
   "scripts": {
     "test": "npm run clean && wdio wdio.conf.js",
     "report": "allure generate --clean && allure open",
-    "smoke": "npm run clean && wdio smoke.conf.js",
     "clean": "rm -rf allure-results"
   },
   "keywords": [],
