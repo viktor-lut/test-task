@@ -3,7 +3,3 @@ allure-results
 allure-report
 .git
 .idea
-bash.exe.stackdump
-debug.log
-screenshots
-merge/*.png
