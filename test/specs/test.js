@@ -107,6 +107,7 @@ describe('Order', function() {
     });
 
     it('case-9', function() {
+        $('#edit-delivery-type > div:nth-child(1) > div').click();
         $('#edit-checkout').click();
         let sel = $('body > div.page > div > div.b-registration');
         sel.waitForDisplayed(5000);
@@ -157,10 +158,11 @@ describe('Order', function() {
         $('#edit-customer-profile-billing-field-user-first-name-und-0-value').setValue('test');
         $('#edit-customer-profile-billing-field-user-last-name-und-0-value').setValue('test');
         $('#edit-customer-profile-billing-field-user-phone-und-0-value').setValue('380601112233');
-        $('#edit-customer-profile-billing-field-customer-recepient-profile > div > div > div > div.fake-select-btn').click()
-        let drop = $('body > div.fake-select-wrap > div > div > div.fake-select-sub-item.fake-select-sub-item-selected > div');
+        $('#edit-customer-profile-billing-field-customer-recepient-profile > div > div').click()
+        let drop = $('body > div.fake-select-sub-main.fake-select-sub-main-opened-bot.fake-select-sub-main-opened > div > div:nth-child(2)');
         browser.pause(500);
         drop.click();
+
         $('#edit-customer-profile-billing-field-user-comment-und-0-value').setValue('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eleifend neque eget purus pretium tincidunt. Donec eros diam, sollicitudin a eleifend sit amet, luctus ac sapien. Donec vitae mollis nisi. Aliquam ut accumsan nisi.');
         $('#edit-customer-profile-billing-agreement').click();
         browser.pause(1000);
